@@ -1,7 +1,8 @@
 @extends('layout.app')
-@section('title', 'Listagem de Compositores')
+@section('title','Listagem de Compositores')
 @section('content')
 <h1>Listagem de Compositores</h1>
+
 <ul>
     @foreach ($compositores as $compositor)
     <li>
@@ -11,7 +12,6 @@
     @endforeach
 </ul>
 @endsection
-
      
            
  
