@@ -15,7 +15,6 @@ class CompositoresController extends Controller
     public function index()
     {
         $compositores = Compositor::all();
-        //return "vai dar certo";
         return view('compositor.index',array('compositores' => $compositores));
     }
 
