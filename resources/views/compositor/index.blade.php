@@ -10,7 +10,7 @@
         {{$compositor->nome}}</a>
     </li>
     @endforeach
-</ul>
+    </ul>
 @endsection
      
            
