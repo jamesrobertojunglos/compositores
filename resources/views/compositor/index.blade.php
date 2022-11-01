@@ -6,7 +6,7 @@
 <ul>
     @foreach ($compositores as $compositor)
     <li>
-        <a href="{{url(compositores/'.$compositor->id)}}">
+        <a href="{{url('compositores/'.$compositor->id)}}">
         {{$compositor->nome}}</a>
     </li>
     @endforeach
