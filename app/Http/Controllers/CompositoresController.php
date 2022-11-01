@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Compositor;
 
 class CompositoresController extends Controller
 {
@@ -13,7 +14,9 @@ class CompositoresController extends Controller
      */
     public function index()
     {
-        //
+        $compositores = Compositor::all();
+        //return "vai dar certo";
+        return view('compositor.index',array('compositores' => $compositores));
     }
 
     /**
@@ -45,7 +48,8 @@ class CompositoresController extends Controller
      */
     public function show($id)
     {
-        //
+        $compositor = Compositor::find($id);
+        return view('compositor.show',array('compositor' => $compositor));
     }
 
     /**
