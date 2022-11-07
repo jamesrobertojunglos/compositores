@@ -15,7 +15,7 @@ use App\Http\Controllers\CompositoresController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('compositores');
 });
 
 Route::resource('compositores',CompositoresController::class);
