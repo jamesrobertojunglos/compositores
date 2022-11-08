@@ -8,9 +8,26 @@
 </div>
 @endif
 
+{{Form::open(['url'=>'compositores/buscar','method'=>'GET'])}}
+<div class="row">
+    <div class="col-sm-3">
+       <a class="btn btn-success" href="{{url('compositores/create')}}">Criar</a>
+    </div>
+    <div class="col-sm-9">
+       <div class="input-group ml-5">
+           @if($busca !== null)
+               &nbsp;<a class="btn btn-info" href="{{url('compositores/')}}">Todos</a>&nbsp;
+           @endif
+           {{Form::text('busca',$busca,['class'=>'form-control','required','placeholder'=>'buscar'])}}
+           &nbsp;  
+           <span class="input-group-btn">
+               {{Form::submit('Buscar',['class'=>'btn btn-secondary'])}}
+           </span>
+        </div>
+    </div>
+</div>
+{{Form::close()}}
 <br />
-<a class="btn btn-success" href="{{url('compositores/create')}}">Criar</a>
-<br /><br />
 <table class="table table-striped">
     @foreach ($compositores as $compositor)
     <tr>
@@ -22,7 +39,3 @@
     @endforeach
 </table>
 @endsection
-     
-           
- 
-
