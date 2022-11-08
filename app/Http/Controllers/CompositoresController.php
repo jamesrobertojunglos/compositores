@@ -69,8 +69,10 @@ class CompositoresController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+        $compositor = Compositor::find($id);
+        return view('compositor.edit',array('compositor' => $compositor));
+    }   
+    
 
     /**
      * Update the specified resource in storage.
