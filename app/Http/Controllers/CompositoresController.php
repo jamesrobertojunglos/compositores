@@ -44,6 +44,7 @@ class CompositoresController extends Controller
         $compositor->resumo = $request->input('resumo');
         $compositor->obras = $request->input('obras');
         if($compositor->save()) {
+            Session::flash('mensagem','Compositor incluido com sucesso');
             return redirect('compositores');
         }
 
@@ -83,7 +84,16 @@ class CompositoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $compositor = Compositor::find($id);
+        $compositor->nome = $request->input('nome');
+        $compositor->ano = $request->input('ano');
+        $compositor->origem = $request->input('origem');
+        $compositor->resumo = $request->input('resumo');
+        $compositor->obras = $request->input('obras');
+        if($compositor->save()) {
+            Session::flash('mensagem','Compositor editado com sucesso');
+            return redirect()->back();
+        }
     }
 
     /**
