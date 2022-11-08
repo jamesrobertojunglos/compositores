@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Compositor;
+use Session;
 
 class CompositoresController extends Controller
 {
@@ -25,7 +26,7 @@ class CompositoresController extends Controller
      */
     public function create()
     {
-        //
+       return view('compositor.create');
     }
 
     /**
@@ -36,7 +37,16 @@ class CompositoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $compositor = new Compositor();
+        $compositor->nome = $request->input('nome');
+        $compositor->ano = $request->input('ano');
+        $compositor->origem = $request->input('origem');
+        $compositor->resumo = $request->input('resumo');
+        $compositor->obras = $request->input('obras');
+        if($compositor->save()) {
+            return redirect('compositores');
+        }
+
     }
 
     /**
