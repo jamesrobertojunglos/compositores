@@ -16,7 +16,7 @@ class CompositoresController extends Controller
     public function index()
     {
         $compositores = Compositor::all();
-        return view('compositor.index',array('compositores' => $compositores));
+        return view('compositor.index',array('compositores' => $compositores, 'busca'=>null));
     }
 
     /**
@@ -104,6 +104,9 @@ class CompositoresController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $compositor = Compositor::find($id);
+       $compositor->delete();
+       Session::flash('mensagem','Compositor Excluido com Sucesso');
+       return redirect(url('compositores/'));
     }
 }
