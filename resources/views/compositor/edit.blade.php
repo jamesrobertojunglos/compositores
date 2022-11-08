@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title','Alteração Compositor{{$compositor->nome}}')
+@section('title','Alteração Compositor {{$compositor->nome}}')
 @section('content')
 <h1>Alteração Compositor {{$compositor->nome}}</h1>
 @if(count($errors) > 0)
@@ -13,6 +13,12 @@
     </ul>
 </div>
 @endif<br />
+@if(Session::has('mensagem'))
+<div class="alert alert-success">
+    {{Session::get('mensagem')}}
+</div>
+@endif
+<br \>
 {{Form::open(['route' => ['compositores.update',$compositor->id], 'method' => 'PUT'])}}
 {{Form::label('nome', 'Nome')}}
 {{Form::text('nome',$compositor->nome,['class'=>'form-control'
@@ -29,3 +35,8 @@
 {{Form::label('obras', 'Obras')}}
 {{Form::text('obras',$compositor->obras,['class'=>'form-control'
 ,'required', 'placeholder'=>'insira as obras do Compositor'])}}
+<br />
+{{Form::submit('Salvar',['class'=>'btn btn-success'])}}
+<a href="{{url('compositores')}}" class="btn btn-secondary">Voltar</a>
+{{Form::close()}}
+@endsection
