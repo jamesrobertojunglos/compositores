@@ -18,6 +18,6 @@ Route::get('/', function () {
     return redirect('compositores/');
 });
 
-Route::get('compositores/buscar',[CompositoresController::class, 'buscar']);
+Route::get('compositores/buscar',[CompositoresController::class,'buscar']);
 
 Route::resource('compositores',CompositoresController::class);
