@@ -14,7 +14,7 @@
     </div>
 @endif
 <br />
-{{Form::open(['route' => 'compositores.store', 'method' => 'POST'])}}
+{{Form::open(['route' => 'compositores.store', 'method' => 'POST','enctype'=>'multipart/form-data'])}}
 {{Form::label('nome', 'Nome')}}
 {{Form::text('nome','',['class'=>'form-control','required',
 'placeholder'=>'Nome do Compositor'])}}
