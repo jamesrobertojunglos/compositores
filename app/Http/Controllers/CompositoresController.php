@@ -36,7 +36,14 @@ class CompositoresController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        $this->validate($request,[
+            'nome' => 'required|min:3]',
+            'ano' => 'required|',
+            'origem' => 'required|',
+            'resumo' => 'required|',
+            'obras'  => 'required|',
+        ]);
         $compositor = new Compositor();
         $compositor->nome = $request->input('nome');
         $compositor->ano = $request->input('ano');
@@ -84,6 +91,13 @@ class CompositoresController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'nome' => 'required|min:3]',
+            'ano' => 'required|',
+            'origem' => 'required|',
+            'resumo' => 'required|',
+            'obras'  => 'required|',
+        ]);
         $compositor = Compositor::find($id);
         $compositor->nome = $request->input('nome');
         $compositor->ano = $request->input('ano');
