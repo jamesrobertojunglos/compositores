@@ -30,6 +30,8 @@
 {{Form::label('obras', 'Obras')}}
 {{Form::text('obras','',['class'=>'form-control','required',
 'placeholder'=>'Obras do Compositor'])}}
+{{Form::label('foto', 'Foto')}}
+{{Form::file('foto','',['class'=>'form-control','id=>foto'])}}
 <br />
 {{Form::submit('Salvar',['class'=>'btn btn-success'])}}
 {!!Form::button('Cancelar',['onclick'=>'javascript:history.go(-1)', 
