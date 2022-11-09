@@ -2,6 +2,17 @@
 @section('title','Inserir Compositor')
 @section('content')
 <h1>Inserir Compositor</h1>
+@if(count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            foreach ($errors->all() as $error)
+            <li>
+                {{error}}
+            </li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <br />
 {{Form::open(['route' => 'compositores.store', 'method' => 'POST'])}}
 {{Form::label('nome', 'Nome')}}
