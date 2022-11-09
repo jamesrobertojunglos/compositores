@@ -2,10 +2,21 @@
 @section('title','Alteração Compositor {{$compositor->nome}}')
 @section('content')
 <h1>Alteração Compositor {{$compositor->nome}}</h1>
+@if(count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            foreach ($errors->all() as $error)
+            <li>
+                {{error}}
+            </li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 @if(Session::has('mensagem'))
-<div class="alert alert-success">
-    {{Session::get('mensagem')}}
-</div>
+    <div class="alert alert-success">
+        {{Session::get('mensagem')}}
+    </div>
 @endif
 <br \>
 {{Form::open(['route' => ['compositores.update',$compositor->id], 'method' => 'PUT'])}}
