@@ -7,7 +7,7 @@
         <ul>
             @foreach ($errors->all() as $error)
             <li>
-                {{error}}
+                {{$error}}
             </li>
             @endforeach
         </ul>
@@ -31,7 +31,7 @@
 {{Form::text('obras','',['class'=>'form-control','required',
 'placeholder'=>'Obras do Compositor'])}}
 {{Form::label('foto', 'Foto')}}
-{{Form::file('foto','',['class'=>'form-control','id=>foto'])}}
+{{Form::file('foto',['class'=>'form-control','id'=>'foto'])}}
 <br />
 {{Form::submit('Salvar',['class'=>'btn btn-success'])}}
 {!!Form::button('Cancelar',['onclick'=>'javascript:history.go(-1)', 
