@@ -41,5 +41,5 @@
     <br />
     {{Form::submit('Salvar',['class'=>'btn btn-success'])}}
     <a href="{{url('compositores')}}" class="btn btn-secondary">Voltar</a>
-    {{Form::close()}}
+{{Form::close()}}
     @endsection
