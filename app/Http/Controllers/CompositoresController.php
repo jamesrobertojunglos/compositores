@@ -26,7 +26,7 @@ class CompositoresController extends Controller
      */
     public function buscar(Request $request) {
         $compositores = Compositor::where('nome','LIKE','%'.$request->input('busca').'%')->get(); 
-       return view('compositor.index'.array('compositores' => $compositores,'busca'=>$request->input('busca')));
+        return view('compositor.index',array('compositores' => $compositores, 'busca'=>$request->input('busca')));
     }
 
     /**
