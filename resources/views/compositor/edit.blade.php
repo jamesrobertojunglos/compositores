@@ -19,7 +19,7 @@
     </div>
 @endif
 <br \>
-{{Form::open(['route' => ['compositores.update',$compositor->id], 'method' => 'PUT'
+{{Form::open(['route' => ['compositores.update',$compositor->id], 'method' => 'PUT',
     'enctype'=>'multipart/form-data'])}}
     {{Form::label('nome', 'Nome')}}
     {{Form::text('nome',$compositor->nome,['class'=>'form-control'
@@ -38,7 +38,6 @@
     ,'required', 'placeholder'=>'insira as obras do Compositor'])}}
     {{Form::label('foto', 'Foto')}}
     {{Form::file('foto',['class'=>'form-control','id'=>'foto'])}}
-    
     <br />
     {{Form::submit('Salvar',['class'=>'btn btn-success'])}}
     <a href="{{url('compositores')}}" class="btn btn-secondary">Voltar</a>
