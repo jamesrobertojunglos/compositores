@@ -19,7 +19,8 @@
     </div>
 @endif
 <br \>
-{{Form::open(['route' => ['compositores.update',$compositor->id], 'method' => 'PUT'])}}
+{{Form::open(['route' => ['compositores.update',$compositor->id], 'method' => 'PUT'
+    'enctype'=>'multipart/form-data'])}}
     {{Form::label('nome', 'Nome')}}
     {{Form::text('nome',$compositor->nome,['class'=>'form-control'
     ,'required', 'placeholder'=>'Nome do Compositor'])}}
