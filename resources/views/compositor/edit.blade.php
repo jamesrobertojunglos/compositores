@@ -35,6 +35,9 @@
     {{Form::label('obras', 'Obras')}}
     {{Form::text('obras',$compositor->obras,['class'=>'form-control'
     ,'required', 'placeholder'=>'insira as obras do Compositor'])}}
+    {{Form::label('foto', 'Foto')}}
+    {{Form::file('foto',['class'=>'form-control','id'=>'foto'])}}
+    
     <br />
     {{Form::submit('Salvar',['class'=>'btn btn-success'])}}
     <a href="{{url('compositores')}}" class="btn btn-secondary">Voltar</a>
