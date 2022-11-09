@@ -17,7 +17,7 @@
 <div class="card-footer">
     {{Form::open(['route'=> ['compositores.destroy',$compositor->id],'method' => 'DELETE'])}}
     <a href="{{url('compositores/'.$compositor->id.'/edit')}}" class="btn btn-success">Alterar</a>
-    {{Form::submit('Excluir',['class'=>'btn btn-danger','onclick'=>'return confirm("Confima a exclusão?")'])}}
+    {{Form::submit('Excluir',['class'=>'btn btn-danger','onclick'=>'return confirm("Confirma a exclusão?")'])}}
     <a href="{{url('compositores/')}}" class="btn btn-secondary">Voltar</a>
     {{Form::close()}}
 </div>
