@@ -19,6 +19,16 @@ class CompositoresController extends Controller
         return view('compositor.index',array('compositores' => $compositores, 'busca'=>null));
     }
 
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function buscar(Request $request) {
+        $compositores = Compositor::where('nome','LIKE','%'.$request->input('busca').'%')->get(); 
+       return view('compositor.index'.array('compositores' => $compositores,'busca'=>$request->input('busca')));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -124,3 +134,4 @@ class CompositoresController extends Controller
        return redirect(url('compositores/'));
     }
 }
+
