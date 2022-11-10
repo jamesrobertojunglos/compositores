@@ -118,7 +118,7 @@ class CompositoresController extends Controller
         if($request->hasFile('foto')){
             $imagem = $request->File('foto');
             $nomearquivo = md5($compositor->id).".".$imagem->getClientOriginalExtension();
-            $request->file('foto')->move(public_path('.\img\contatos'),$nomearquivo);
+            $request->file('foto')->move(public_path('.\img\compositores'),$nomearquivo);
         }
         $compositor->nome = $request->input('nome');
         $compositor->ano = $request->input('ano');
