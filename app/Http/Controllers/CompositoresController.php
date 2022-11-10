@@ -141,7 +141,7 @@ class CompositoresController extends Controller
     {
        $compositor = Compositor::find($id);
        if (isset($request->foto)) {
-        unlink($request->foto);
+            unlink($request->foto);
        }
        $compositor->delete();
        Session::flash('mensagem','Compositor Excluido com Sucesso');
