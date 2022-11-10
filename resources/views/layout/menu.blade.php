@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-blue navbar-dark">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class="container-fluid">
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -8,7 +8,7 @@
                     <a class="nav-link" href="{{url('compositores/')}}">Compositores Clássicos</a>
                 </li>
                 <li class='nav-item'>
-                    <a class="nav-link" href="{{url('obras/')}}">Partituras completas</a>
+                <a class="nav-link" href="{{url('obras/')}}">Partituras completas</a>
                 </li>
             </ul>
         </div>
