@@ -38,7 +38,7 @@
     </div>
         <div class="card-footer">
             {{Form::open(['route'=> ['compositores.destroy',$compositor->id],'method' => 'DELETE'])}}
-            @if (@nomeimagem !== "./img/compositores/semfoto.webp")
+            @if ($nomeimagem !== "./img/compositores/semfoto.webp")
                 {{Form::hidden('foto',$nomeimagem)}}
             @endif
             <a href="{{url('compositores/'.$compositor->id.'/edit')}}" class="btn btn-success">Alterar</a>
