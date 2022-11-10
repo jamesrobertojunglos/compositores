@@ -4,18 +4,18 @@
 <div class="card w-100">
     @php
         $nomeimagem = "";
-        if(file_exists("./img/compositores".md5($compositor->id).".jpg")) {
+        if(file_exists("./img/compositores/".md5($compositor->id).".jpg")) {
             $nomeimagem = "./img/compositores/".md5($compositor->id).".jpg";
-        } elseif (file_exists("./img/compositores".md5($compositor->id)."png")) {
+        } elseif (file_exists("./img/compositores/".md5($compositor->id)."png")) {
             $nomeimagem = "./img/compositores/".md5($compositor->id).".png";
         } elseif 
-        (file_exists("./img/compositores".md5($compositor->id).".gif")) {
+        (file_exists("./img/compositores/".md5($compositor->id).".gif")) {
             $nomeimagem = "./img/compositores/".md5($compositor->id).".gif";
         } elseif 
-        (file_exists("./img/compositores".md5($compositor->id).".webp")) {
+        (file_exists("./img/compositores/".md5($compositor->id).".webp")) {
             $nomeimagem = "./img/compositores/".md5($compositor->id).".webp";
         } elseif 
-        (file_exists("./img/compositores".md5($compositor->id).".jpeg")) {
+        (file_exists("./img/compositores/".md5($compositor->id).".jpeg")) {
             $nomeimagem = "./img/compositores/".md5($compositor->id).".jpeg";
         } else {
             $nomeimagem = "./img/compositores/semfoto.webp";
