@@ -38,4 +38,5 @@
     </tr>
     @endforeach
 </table>
+{{$compositores->links() }}
 @endsection
