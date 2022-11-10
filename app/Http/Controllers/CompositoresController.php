@@ -67,7 +67,7 @@ class CompositoresController extends Controller
                 //dd($imagem, $nomearquivo,$contato->id);
                 $request->file('foto')->move(public_path('.\img\compositores'),$nomearquivo);
             }
-            Session::flash('mensagem','Compositor incluido com sucesso');
+            //Session::flash('mensagem','Compositor incluido com sucesso');
             return redirect('compositores');
         }
 
@@ -132,9 +132,12 @@ class CompositoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
        $compositor = Compositor::find($id);
+       if (isset($request->foto)) {
+        unlink($request->foto);
+       }
        $compositor->delete();
        Session::flash('mensagem','Compositor Excluido com Sucesso');
        return redirect(url('compositores/'));
