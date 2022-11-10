@@ -108,13 +108,18 @@ class CompositoresController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'nome' => 'required|min:3]',
-            'ano' => 'required|',
-            'origem' => 'required|',
-            'resumo' => 'required|',
-            'obras'  => 'required|',
+            'nome' => 'required|min:3',
+            'ano' => 'required',
+            'origem' => 'required',
+            'resumo' => 'required',
+            'obras'  => 'required',
         ]);
         $compositor = Compositor::find($id);
+        if($request->hasFile('foto')){
+            $imagem = $request->File('foto');
+            $nomearquivo = md5($compositor->id).".".$imagem->getClientOriginalExtension();
+            $request->file('foto')->move(public_path('.\img\contatos'),$nomearquivo);
+        }
         $compositor->nome = $request->input('nome');
         $compositor->ano = $request->input('ano');
         $compositor->origem = $request->input('origem');
