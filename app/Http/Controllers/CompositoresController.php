@@ -15,7 +15,7 @@ class CompositoresController extends Controller
      */
     public function index()
     {
-        $compositores = Compositor::all();
+        $compositores = Compositor::paginate(5);
         return view('compositor.index',array('compositores' => $compositores, 'busca'=>null));
     }
 
@@ -25,7 +25,7 @@ class CompositoresController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function buscar(Request $request) {
-        $compositores = Compositor::where('nome','LIKE','%'.$request->input('busca').'%')->get(); 
+        $compositores = Compositor::where('nome','LIKE','%'.$request->input('busca').'%')->paginate(5); 
         return view('compositor.index',array('compositores' => $compositores, 'busca'=>$request->input('busca')));
     }
 
