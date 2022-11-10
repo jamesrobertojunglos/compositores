@@ -64,7 +64,7 @@ class CompositoresController extends Controller
             if($request->hasFile('foto')){
                 $imagem = $request->file('foto');
                 $nomearquivo = md5($compositor->id).".".$imagem->getClientOriginalExtension();
-                //dd($imagem, $nomearquivo,$contato->id);
+                //dd($imagem, $nomearquivo,$compositor->id);
                 $request->file('foto')->move(public_path('.\img\compositores'),$nomearquivo);
             }
             //Session::flash('mensagem','Compositor incluido com sucesso');
