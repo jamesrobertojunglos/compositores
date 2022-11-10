@@ -48,11 +48,11 @@ class CompositoresController extends Controller
     public function store(Request $request)
     {   
         $this->validate($request,[
-            'nome' => 'required|min:3]',
-            'ano' => 'required|',
-            'origem' => 'required|',
-            'resumo' => 'required|',
-            'obras'  => 'required|',
+            'nome' => 'required|min:3',
+            'ano' => 'required',
+            'origem' => 'required',
+            'resumo' => 'required',
+            'obras'  => 'required',
         ]);
         $compositor = new Compositor();
         $compositor->nome = $request->input('nome');
