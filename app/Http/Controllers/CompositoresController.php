@@ -15,7 +15,7 @@ class CompositoresController extends Controller
      */
     public function index()
     {
-        $compositores = Compositor::paginate(5);
+        $compositores = Compositor::all();
         return view('compositor.index',array('compositores' => $compositores, 'busca'=>null));
     }
 
@@ -25,7 +25,7 @@ class CompositoresController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function buscar(Request $request) {
-        $compositores = Compositor::where('nome','LIKE','%'.$request->input('busca').'%')->paginate(5); 
+        $compositores = Compositor::where('nome','LIKE','%'.$request->input('busca').'%')->get(); 
         return view('compositor.index',array('compositores' => $compositores, 'busca'=>$request->input('busca')));
     }
 
@@ -141,7 +141,7 @@ class CompositoresController extends Controller
     {
        $compositor = Compositor::find($id);
        if (isset($request->foto)) {
-            unlink($request->foto);
+        unlink($request->foto);
        }
        $compositor->delete();
        Session::flash('mensagem','Compositor Excluido com Sucesso');
