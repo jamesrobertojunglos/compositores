@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('title','Compositor - {{$compositor->nome}}')
 @section('content')
-<div class="card w-50">
+<div class="card w-100">
     @php
         $nomeimagem = "";
         if(file_exists("./img/compositores".md5($compositor->id).".jpg")) {
@@ -24,7 +24,7 @@
     @endphp
 
     {{Html::image(asset($nomeimagem),'Foto de '.$compositor->nome,["class"=>"img-thumbnail"])}} 
-       
+
     <div class="card-header">
     <h1>Compositor - {{$compositor->nome}}</h1>
     </div>
