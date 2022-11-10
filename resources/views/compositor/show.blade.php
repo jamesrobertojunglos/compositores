@@ -1,7 +1,30 @@
 @extends('layout.app')
 @section('title','Compositor - {{$compositor->nome}}')
 @section('content')
-<div class="card">
+<div class="card w-50">
+    @php
+        $nomeimagem = "";
+        if(file_exists("./img/compositores".md5($compositor->id).".jpg")) {
+            $nomeimagem = "./img/compositores/".md5($compositor->id).".jpg";
+        } elseif (file_exists("./img/compositores".md5($compositor->id)."png")) {
+            $nomeimagem = "./img/compositores/".md5($compositor->id).".png";
+        } elseif 
+        (file_exists("./img/compositores".md5($compositor->id).".gif")) {
+            $nomeimagem = "./img/compositores/".md5($compositor->id).".gif";
+        } elseif 
+        (file_exists("./img/compositores".md5($compositor->id).".webp")) {
+            $nomeimagem = "./img/compositores/".md5($compositor->id).".webp";
+        } elseif 
+        (file_exists("./img/compositores".md5($compositor->id).".jpeg")) {
+            $nomeimagem = "./img/compositores/".md5($compositor->id).".jpeg";
+        } else {
+            $nomeimagem = "./img/compositores/semfoto.webp";
+        }
+        //echo $nomeimagem;
+    @endphp
+
+    {{Html::image(asset($nomeimagem),'Foto de '.$compositor->nome,["class"=>"img-thumbnail"])}} 
+       
     <div class="card-header">
     <h1>Compositor - {{$compositor->nome}}</h1>
     </div>
