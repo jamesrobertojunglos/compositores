@@ -8,7 +8,7 @@
                     <a class="nav-link" href="{{url('compositores/')}}">Compositores Clássicos</a>
                 </li>
                 <li class='nav-item'>
-                <a class="nav-link" href="{{url('obras/')}}">Partituras completas</a>
+                <a class="nav-link" href="{{url('partituras/')}}">Partituras completas</a>
                 </li>
             </ul>
         </div>
