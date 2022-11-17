@@ -15,6 +15,8 @@ class CreatePartiturasTable extends Migration
     {
         Schema::create('partituras', function (Blueprint $table) {
             $table->id();
+            $table->string('compositor',200);
+            $table->string('partituras',20000);
             $table->timestamps();
         });
     }
