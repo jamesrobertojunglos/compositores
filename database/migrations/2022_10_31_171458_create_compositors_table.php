@@ -15,11 +15,11 @@ class CreateCompositorsTable extends Migration
     {
         Schema::create('compositors', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('ano');
-            $table->string('origem');
-            $table->string('resumo');
-            $table->string('obras');
+            $table->string('nome',200);
+            $table->string('ano',200);
+            $table->string('origem',50);
+            $table->string('resumo',5000);
+            $table->string('obras',5000);
             $table->timestamps();
         });
     }
