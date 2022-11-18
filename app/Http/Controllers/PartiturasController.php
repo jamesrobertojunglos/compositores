@@ -61,7 +61,7 @@ class PartituraController extends Controller
                 //dd($imagem, $nomearquivo,$partitura->id);
                 $request->file('foto')->move(public_path('.\img\partituras'),$nomearquivo);
             }
-            //Session::flash('mensagem','Compositor incluido com sucesso');
+            Session::flash('mensagem','Partitura incluida com sucesso');
             return redirect('partituras');
         }
     }
@@ -114,7 +114,7 @@ class PartituraController extends Controller
             $partitura->partituras = $request->input('partituras');
             if($partitura->save()) {
                 Session::flash('mensagem','Partitura editada com sucesso.');
-            return redirect()->back();
+            return redirect('partituras');
         }
     }
 
