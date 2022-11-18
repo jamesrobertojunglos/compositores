@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompositoresController;
+use App\Http\Controllers\PartiturasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,16 @@ use App\Http\Controllers\CompositoresController;
 |
 */
 
-Route::get('/', function () {
-    return redirect('compositores/');
+//Route::get('/', function () {
+    //return redirect('compositores/');
+//});
+
+Route::get('/',function () {
+   return view('home');
 });
 
 Route::get('compositores/buscar',[CompositoresController::class,'buscar']);
 Route::resource('compositores',CompositoresController::class);
+
+Route::get('partituras/buscar',[PartiturasController::class,'buscar']);
+Route::resource('partituras',PartiturasController::class);

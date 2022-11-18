@@ -38,5 +38,5 @@
     </tr>
     @endforeach
 </table>
-{{$partituras->links()}}
+{{ $partituras->links() }}
 @endsection

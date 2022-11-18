@@ -6,7 +6,7 @@ use App\Models\Partitura;
 use Illuminate\Http\Request;
 use Session;
 
-class PartituraController extends Controller
+class PartiturasController extends Controller
 {
     /**
      * Display a listing of the resource.
