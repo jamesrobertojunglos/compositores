@@ -1,22 +1,22 @@
 @extends('layout.app')
-@section('title','Listagem de Compositores')
+@section('title','Listagem de Partituras')
 @section('content')
-<h1>Listagem de Compositores</h1>
+<h1>Listagem de Partituras</h1>
 @if(Session::has('mensagem'))
 <div class="alert alert-info">
     {{Session::get('mensagem')}}
 </div>
 @endif
 
-{{Form::open(['url'=>'compositores/buscar','method'=>'GET'])}}
+{{Form::open(['url'=>'partituras/buscar','method'=>'GET'])}}
 <div class="row">
     <div class="col-sm-3">
-       <a class="btn btn-success" href="{{url('compositores/create')}}">Criar</a>
+       <a class="btn btn-success" href="{{url('partituras/create')}}">Criar</a>
     </div>
     <div class="col-sm-9">
        <div class="input-group ml-5">
            @if($busca !== null)
-               &nbsp;<a class="btn btn-info" href="{{url('compositores/')}}">Todos</a>&nbsp;
+               &nbsp;<a class="btn btn-info" href="{{url('partituras/')}}">Todos</a>&nbsp;
            @endif
            {{Form::text('busca',$busca,['class'=>'form-control','required','placeholder'=>'buscar'])}}
            &nbsp;  
@@ -29,14 +29,14 @@
 {{Form::close()}}
 <br />
 <table class="table table-striped">
-    @foreach ($compositores as $compositor)
+    @foreach ($partituras as $partitura)
     <tr>
         <td>
-            <a href="{{url('compositores/'.$compositor->id)}}">
-                {{$compositor->nome}}</a>
+            <a href="{{url('partituras/'.$partitura->id)}}">
+                {{$partitura->compositores}}</a>
         </td> 
     </tr>
     @endforeach
 </table>
-{{$compositores->links() }}
+{{$partituras->links() }}
 @endsection
