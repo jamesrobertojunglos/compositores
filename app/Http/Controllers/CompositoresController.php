@@ -67,7 +67,7 @@ class CompositoresController extends Controller
                 //dd($imagem, $nomearquivo,$compositor->id);
                 $request->file('foto')->move(public_path('.\img\compositores'),$nomearquivo);
             }
-            //Session::flash('mensagem','Compositor incluido com sucesso');
+            Session::flash('mensagem','Compositor incluido com sucesso');
             return redirect('compositores');
         }
 
