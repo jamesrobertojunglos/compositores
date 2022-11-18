@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Partitura;
 use Illuminate\Http\Request;
 
-class PartituraController extends Controller
+class PartiturasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class PartituraController extends Controller
      */
     public function index()
     {
-        //
+       $partituras = Partitura::all();
+       return view('partitura.index',array('partituras'=>$partituras,'busca'=>null));
     }
 
     /**
