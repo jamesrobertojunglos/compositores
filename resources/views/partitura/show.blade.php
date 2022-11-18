@@ -9,7 +9,7 @@
         } elseif (file_exists("./img/partituras/".md5($partitura->id)."png")) {
             $nomeimagem = "./img/partituras/".md5($partitura->id).".png";
         } elseif 
-        (file_exists("./img/compositores/".md5($partitura->id).".gif")) {
+        (file_exists("./img/partituras/".md5($partitura->id).".gif")) {
             $nomeimagem = "./img/partituras/".md5($partitura->id).".gif";
         } elseif 
         (file_exists("./img/partituras/".md5($partitura->id).".webp")) {
@@ -34,7 +34,7 @@
         Partitura: {{$partitura->partitura}}<br/>
     </div>
         <div class="card-footer">
-            {{Form::open(['route'=> ['partituras.destroy',$compositor->id],'method' => 'DELETE'])}}
+            {{Form::open(['route'=> ['partituras.destroy',$partitura->id],'method' => 'DELETE'])}}
             @if ($nomeimagem !== "./img/partituras/semfoto.webp")
                 {{Form::hidden('foto',$nomeimagem)}}
             @endif
