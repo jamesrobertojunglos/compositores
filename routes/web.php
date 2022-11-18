@@ -26,5 +26,4 @@ Route::get('/',function () {
 Route::get('compositores/buscar',[CompositoresController::class,'buscar']);
 Route::resource('compositores',CompositoresController::class);
 
-Route::get('partituras/buscar',[PartiturasController::class,'buscar']);
-Route::resource('partituras',PartiturasController::class);
+
