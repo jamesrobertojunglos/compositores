@@ -13,6 +13,11 @@
         </ul>
     </div>
 @endif
+@if(Session::has('mensagem'))
+    <div class="alert alert-success">
+        {{Session::get('mensagem')}}
+    </div>
+@endif
 <br />
 {{Form::open(['route' => 'compositores.store', 'method' => 'POST','enctype'=>'multipart/form-data'])}}
 {{Form::label('nome', 'Nome')}}
