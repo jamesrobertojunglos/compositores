@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Partitura;
 use Illuminate\Http\Request;
+use App\Models\Partitura;
+use Session;
 
 class PartiturasController extends Controller
 {
@@ -14,8 +15,18 @@ class PartiturasController extends Controller
      */
     public function index()
     {
-       $partituras = Partitura::all();
+       $partituras = Partitura::paginate(5);
        return view('partitura.index',array('partituras'=>$partituras,'busca'=>null));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function buscar(Request $request) {
+        $partituras = Partitura::where('compositor','LIKE','%'.$request->input('busca').'%')->paginate(5); 
+        return view('compositor.index',array('Partituras' => $partituras, 'busca'=>$request->input('busca')));
     }
 
     /**
@@ -25,7 +36,7 @@ class PartiturasController extends Controller
      */
     public function create()
     {
-        //
+        return view('partituras.create');
     }
 
     /**
@@ -36,51 +47,94 @@ class PartiturasController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $this->validate($request,[
+            'compositor' => 'required|min:3',
+            'partitura' => 'required',
+        ]);
+        $partitura = new Partitura();
+        $partitura->compositor = $request->input('compositor');
+        $partitura->partitura = $request->input('partitura');
+        if($partitura->save()) {
+            if($request->hasFile('foto')){
+                $imagem = $request->file('foto');
+                $nomearquivo = md5($partitura->id).".".$imagem->getClientOriginalExtension();
+                //dd($imagem, $nomearquivo,$partitura->id);
+                $request->file('foto')->move(public_path('.\img\partituras'),$nomearquivo);
+            }
+            Session::flash('mensagem','Partitura incluida com sucesso');
+            return redirect('partituras');
+        }
 
+    }
+    
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Partitura  $partitura
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Partitura $partitura)
+    public function schow(id)
     {
-        //
+        $partitura = Partitura::find($id);
+        return view('partitura.show',array('partitura' => $partitura));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Partitura  $partitura
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Partitura $partitura)
+    public function edit($id)
     {
-        //
+        $partitura = Partitura::find($id);
+        return view('partitura.edit',array('partitura' => $partitura));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Partitura  $partitura
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Partitura $partitura)
+    public function update(Request $request, Partitura $id)
     {
-        //
-    }
+        $this->validate($request,[
+            'compositor' => 'required|min:3',
+            'partitura' => 'required',
+        ]);
+        $partitura = new Partitura();
+        $partitura->compositor = $request->input('compositor');
+        $partitura->partitura = $request->input('partitura');
+        if($partitura->save()) {
+            if($request->hasFile('foto')){
+                $imagem = $request->file('foto');
+                $nomearquivo = md5($partitura->id).".".$imagem->getClientOriginalExtension();
+                //dd($imagem, $nomearquivo,$partitura->id);
+                $request->file('foto')->move(public_path('.\img\partituras'),$nomearquivo);
+            }
+            Session::flash('mensagem','Partitura editada com sucesso');
+            return redirect()->back();
+        }
 
+    }
+    
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Partitura  $partitura
+     * @param  \App\Models\Request $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Partitura $partitura)
+    public function destroy(Request $request, $id)
     {
-        //
+        $partitura = Partitura::find($id);
+        if (isset($request->foto)) {
+         unlink($request->foto);
+        }
+        $partitura->delete();
+        Session::flash('mensagem','Partitura Excluida com Sucesso');
+        return redirect(url('partituras/'));
     }
 }
