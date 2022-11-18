@@ -1,7 +1,7 @@
 @extends('layout.app')
-@section('title','Alteração Partitura {{$Partitura->compositor}}')
+@section('title','Alteração Partitura {{$partitura->compositor}}')
 @section('content')
-<h1>Alteração Compositor {{$Partitura->compositor}}</h1>
+<h1>Alteração Compositor {{$partitura->compositor}}</h1>
 @if(count($errors) > 0)
     <div class="alert alert-danger">
         <ul>

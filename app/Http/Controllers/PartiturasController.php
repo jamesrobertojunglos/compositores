@@ -25,7 +25,7 @@ class PartiturasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function buscar(Request $request) {
-        $partituras = Partitura::where('compositor','LIKE','%'.$request->input('busca').'%')->paginate(5); 
+        $partituras = Partitura::where('partitura','LIKE','%'.$request->input('busca').'%')->paginate(5); 
         return view('compositor.index',array('Partituras' => $partituras, 'busca'=>$request->input('busca')));
     }
 
@@ -36,7 +36,7 @@ class PartiturasController extends Controller
      */
     public function create()
     {
-        return view('partituras.create');
+        return view('partitura.create');
     }
 
     /**
@@ -73,7 +73,7 @@ class PartiturasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function schow(id)
+    public function show($id)
     {
         $partitura = Partitura::find($id);
         return view('partitura.show',array('partitura' => $partitura));
