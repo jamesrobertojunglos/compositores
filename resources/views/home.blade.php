@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('title','Compositores')
 @section('content')
     <div class="row justify-content-center">
@@ -8,13 +8,13 @@
                 <div class="col m-3 bg-info text-light">
                     <div class="card-header p-2">Compositores</div>
                     <div class="card-body h3 p-5">
-                        {{$Compositores}}
+                        {{$compositores}}
                     </div>
                 </div>
                 <div class="col m-3 bg-white text-black">
                     <div class="card-header p-2">partituras</div>
                     <div class="card-body h3 p-5">
-                        {{$Partituras}}
+                        {{$partituras}}
                     </div>
                 </div>
             </div>
